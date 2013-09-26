@@ -50,7 +50,7 @@ public class SerialTest implements SerialPortEventListener {
         }
 
         if (portId == null) {
-            System.out.println("Could not find COM port.");
+            System.err.println("Could not find COM port.");
             return;
         }
 
@@ -93,9 +93,9 @@ public class SerialTest implements SerialPortEventListener {
      */
     public synchronized void serialEvent(SerialPortEvent oEvent) {
         if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-            try {
+            try
+            {
                 String inputLine=input.readLine();
-                System.out.println(inputLine);
                 SerData.data0=inputLine;
 
             } catch (Exception e) {
@@ -123,13 +123,8 @@ public class SerialTest implements SerialPortEventListener {
                     {
                         output.write(SerData.sendstring.getBytes());
                         output.flush();
-                        System.out.println("Sended");
                         SerData.buff = SerData.sendstring;
 
-                    }
-                    else
-                    {
-                       // System.out.println("Nofing to send");
                     }
                 }
                 catch (Exception e)

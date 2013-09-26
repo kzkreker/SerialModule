@@ -49,13 +49,11 @@ public class HttpServer {
 
                         // create Request object and parse
                         Request request = new Request(input);
-                        String  uri = request.parse();
-
-                        System.out.println(uri+"Http");
+                        request.parse();
 
                         // create Response object
                         Response response = new Response(output);
-                        response.setRequest(request, uri);
+                        response.setRequest(request);
                         response.sendStaticResource();
 
                         // Close the socket
